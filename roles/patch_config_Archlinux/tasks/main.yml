@@ -1,0 +1,20 @@
+---
+- name: Patch nginx.conf to support a conf.d directory (Arch Linux)
+  patch:
+    src: files/nginx.conf.patch
+    dest: /etc/nginx/nginx.conf
+  when: nginx_patch_confd_Archlinux and not nginx_hostless_global_config
+
+- name: Create nginx conf.d directory (Arch Linux)
+  file:
+    path: '{{ nginx_dir }}'
+    owner: root
+    group: root
+    state: directory
+
+- name: Create uWSGI directory (Arch Linux)
+  file:
+    path: '{{ uwsgi_dir }}'
+    owner: root
+    group: root
+    state: directory

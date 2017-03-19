@@ -1,0 +1,20 @@
+---
+- name: Remember SELinux status
+  set_fact: "selinux_prev={{ ansible_selinux['mode'] }}"
+
+- name: Temporarily disable SELinux
+  selinux:
+    policy: targeted
+    state: permissive
+  when: selinux_prev == 'enforcing'
+
+- name: Remove base directory (if present/with SELinux disabled)
+  file:
+    path: '{{ base_dir }}'
+    state: absent
+
+- name: Re-enable SELinux
+  selinux:
+    policy: targeted
+    state: enforcing
+  when: selinux_prev == "enforcing"

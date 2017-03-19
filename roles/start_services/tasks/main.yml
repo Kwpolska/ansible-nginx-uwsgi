@@ -1,0 +1,13 @@
+---
+- name: Enable and start uWSGI Emperor
+  systemd:
+    name: '{{ uwsgi_service_name }}'
+    enabled: yes
+    state: restarted
+    daemon_reload: yes
+
+- name: Enable and start nginx
+  systemd:
+    name: nginx
+    enabled: yes
+    state: restarted

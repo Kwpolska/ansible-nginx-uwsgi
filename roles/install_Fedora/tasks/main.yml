@@ -1,0 +1,5 @@
+---
+- name: Install packages (Fedora)
+  dnf:
+    name: python3,python3-virtualenv,uwsgi,uwsgi-plugin-python3,uwsgi-logger-file,nginx,git
+    state: present

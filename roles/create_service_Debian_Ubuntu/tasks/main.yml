@@ -1,0 +1,8 @@
+---
+- name: Create emperor.uwsgi service (Debian/Ubuntu)
+  copy:
+    src: files/emperor.uwsgi.service
+    dest: /etc/systemd/system/emperor.uwsgi.service
+    owner: root
+    group: root
+    mode: 0644

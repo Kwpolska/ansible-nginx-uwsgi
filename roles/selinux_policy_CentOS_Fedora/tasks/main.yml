@@ -1,0 +1,31 @@
+---
+- name: Temporarily disable SELinux
+  selinux:
+    policy: targeted
+    state: permissive
+  when: selinux_prev == 'enforcing'
+
+- name: Make static files readable by nginx (SELinux)
+  command: chcon -R system_u:system_r:httpd_t:s0 '{{ base_dir }}/appdata/static'
+
+- name: Re-enable SELinux
+  selinux:
+    policy: targeted
+    state: enforcing
+  when: selinux_prev == "enforcing"
+
+- name: Upload SELinux policy file
+  copy:
+    src: files/nginx-uwsgi.pp
+    dest: /tmp/nginx-uwsgi.pp
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Import SELinux policy
+  command: semodule -i /tmp/nginx-uwsgi.pp
+
+- name: Delete SELinux policy file
+  file:
+    path: /tmp/nginx-uwsgi.pp
+    state: absent

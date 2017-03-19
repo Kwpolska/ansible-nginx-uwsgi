@@ -1,0 +1,8 @@
+---
+- name: Patch uwsgi.ini (Fedora)
+  copy:
+    src: files/uwsgi.ini
+    dest: /etc/uwsgi.ini
+    owner: root
+    group: root
+    mode: 0644

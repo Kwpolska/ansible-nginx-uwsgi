@@ -1,0 +1,60 @@
+---
+# https://go.chriswarrick.com/pyweb
+- name: Install nginx and uWSGI for a Python web application (pyweb)
+  hosts: nginx-uwsgi
+  become: yes
+  become_user: root
+
+# talk to all hosts just so we can learn about them
+- hosts: all
+  tasks:
+     - group_by: key=os_{{ ansible_distribution }}
+
+- hosts: os_Debian:os_Ubuntu
+  gather_facts: False
+  become: yes
+  become_user: root
+  roles:
+     - install_Debian_Ubuntu
+     - setup_venv_app
+     - patch_config_Debian_Ubuntu
+     - configure_nginx_uwsgi
+     - create_service_Debian_Ubuntu
+     - start_services
+
+- hosts: os_Fedora
+  gather_facts: False
+  become: yes
+  become_user: root
+  roles:
+     - install_Fedora
+     - {role: cleanup_selinux_CentOS_Fedora, when: not skip_selinux}
+     - setup_venv_app
+     - patch_config_CentOS_Fedora
+     - configure_nginx_uwsgi
+     - {role: selinux_policy_CentOS_Fedora, when: not skip_selinux}
+     - start_services
+
+- hosts: os_CentOS
+  gather_facts: False
+  become: yes
+  become_user: root
+  roles:
+     - install_CentOS
+     - {role: cleanup_selinux_CentOS_Fedora, when: not skip_selinux}
+     - setup_venv_app
+     - patch_config_CentOS_Fedora
+     - configure_nginx_uwsgi
+     - {role: selinux_policy_CentOS_Fedora, when: not skip_selinux}
+     - start_services
+
+- hosts: os_Archlinux
+  gather_facts: False
+  become: yes
+  become_user: root
+  roles:
+     - install_Archlinux
+     - setup_venv_app
+     - patch_config_Archlinux
+     - configure_nginx_uwsgi
+     - start_services

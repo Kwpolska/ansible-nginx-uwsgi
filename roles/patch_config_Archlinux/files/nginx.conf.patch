@@ -1,0 +1,11 @@
+--- nginx.conf
++++ nginx.conf
+@@ -114,4 +114,8 @@
+     #    }
+     #}
+
++    # Load modular configuration files from the /etc/nginx/conf.d directory.
++    # See http://nginx.org/en/docs/ngx_core_module.html#include
++    # for more information.
++    include /etc/nginx/conf.d/*;
+ }

@@ -1,0 +1,6 @@
+---
+- name: Disable deafult site (Debian/Ubuntu)
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+  when: nginx_hostless_global_config or nginx_disable_default_site

@@ -1,0 +1,14 @@
+[uwsgi]
+socket = {{ base_dir }}/uwsgi.sock
+chmod-socket = 775
+chdir = {{ base_dir }}/appdata
+master = true
+binary-path = {{ base_dir }}/bin/uwsgi
+virtualenv = {{ base_dir }}
+module = {{ uwsgi_module }}
+uid = {{ uid }}
+gid = {{ gid }}
+processes = 1
+threads = 1
+plugins = {{ uwsgi_plugins }}
+logger = file:{{ base_dir }}/uwsgi.log

@@ -1,0 +1,14 @@
+---
+uid: http
+gid: http
+nginx_dir: /etc/nginx/conf.d
+uwsgi_dir: /etc/uwsgi/vassals
+uwsgi_plugins: python
+virtualenv_cmd: python3 -m virtualenv
+uwsgi_service_name: emperor.uwsgi
+# This tutorial assumes you use /etc/nginx/conf.d for your nginx config.
+# The default Arch Linux /etc/nginx/nginx.conf does not do this, and therefore
+# needs patching. The patch is based off the default config file. If you
+# customized your file, you can either use nginx_replace_global_config to
+# install the default nginx config, or disable both settings and do it manually.
+nginx_patch_confd_Archlinux: yes

@@ -1,0 +1,11 @@
+---
+app_name: myapp
+base_dir: '/srv/{{ app_name }}'
+nginx_server_name: localhost myapp.local
+uwsgi_module: flaskapp:app
+git_repo: https://github.com/Kwpolska/flask-demo-app
+# If this is set to "yes", the global nginx config will be replaced by one
+# that has no default hosts. This is based on the default config of your OS.
+# You should not use it if you customized /etc/nginx/nginx.conf in any way,
+# or if you have already used nginx before.
+nginx_hostless_global_config: no
