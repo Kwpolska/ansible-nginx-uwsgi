@@ -8,6 +8,7 @@ Automation for nginx and uWSGI Emperor setup. Based on my [pyweb tutorial][] and
 
 Supported OSes
 --------------
+
 The support list matches the tutorial:
 
 * Ubuntu 16.04 LTS or newer
@@ -15,7 +16,6 @@ The support list matches the tutorial:
 * Fedora 24 or newer (with SELinux enabled and disabled)
 * CentOS 7 (with SELinux enabled and disabled)
 * Arch Linux
-
 
 Other operating systems are *unsupported*, because of packaging and default configuration differences.
 
@@ -25,6 +25,8 @@ Usage
 Standard Ansible Playbooks procedure. [Install Ansible](https://docs.ansible.com/ansible/intro_installation.html), edit the applicable configuration in `group_vars`, put hostnames in `hosts` (the first line is `[nginx-uwsgi]` and the following lines are `hostnames`; default is to install on localhost) and run:
 
     $ ansible-playbook nginx-uwsgi.yml -i hosts
+
+To understand what the Playbook does, make sure to read the [pyweb tutorial][].
 
 Configuration
 -------------
@@ -43,6 +45,7 @@ Configuration happens in three files: `hosts`, `group_vars/all`, and `group_vars
   * For Bottle: `module = filename:app`, where `app = bottle.default_app()`
   * For Pyramid: `module = filename:app`, where `app = config.make_wsgi_app()` (make sure it’s **not** in a `if __name__ == '__main__':` block — the demo app does that!)
 
+* `uwsgi_processes` and `uwsgi_threads`: control the resources devoted to this application. (default: `1` and `1`; should be more for bigger apps)
 * `git_repo`: Git repository that contains app code (default: `https://github.com/Kwpolska/flask-demo-app`)
 * `nginx_hostless_global_config`: Replace nginx.conf with one that does not have a default host. Destructive, see caveat below! (default: `no`)
 
