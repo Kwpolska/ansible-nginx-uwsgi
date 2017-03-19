@@ -6,4 +6,5 @@ uwsgi_dir: /etc/uwsgi-emperor/vassals
 uwsgi_plugins: python3,logfile
 virtualenv_cmd: virtualenv -p /usr/bin/python3
 uwsgi_service_name: emperor.uwsgi
+# Disable the default site by removing /etc/nginx/sites-enabled/default.
 nginx_disable_default_site: yes
