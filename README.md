@@ -80,6 +80,10 @@ Make sure you have the following packages installed first on the *destination* m
 
 The default config of nginx creates some servers with default pages. Not everyone wants that. If you want this playbook to *replace* your nginx.conf file with one that has no servers (based on your OSes default `nginx.conf`), set `nginx_hostless_global_config` to `yes`. You should not use it if you customized /etc/nginx/nginx.conf in any way, or if you have installed and configured nginx before. On Ubuntu and Debian, `nginx_disable_default_site` is less destructive and enabled by default.
 
+### nginx host config is very basic (All OSes)
+
+The nginx host config is rudimentary and does not include SSL/TLS support and custom error pages. For the former, see [Remy van Elst’s guide](https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html).
+
 ### nginx conf.d support (Arch Linux)
 
 By default, nginx on Arch Linux does not have any modular-include config directory. This playbook (and best practices) recommend having one for cleaner config. This playbook will try to patch your configuration file, but if you configured nginx in a way that makes the patch fail, you need to manually add this snippet to your `server {}` block:
