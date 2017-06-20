@@ -12,6 +12,7 @@ uwsgi_env: []
 # uwsgi_env:
 # - 'DJANGO_SETTINGS_MODULE={{ app_package }}.settings'
 git_repo: https://github.com/Kwpolska/flask-demo-app
+git_branch: master
 # If this is set to "yes", the global nginx config will be replaced by one
 # that has no default hosts. This is based on the default config of your OS.
 # You should not use it if you customized /etc/nginx/nginx.conf in any way,

@@ -8,7 +8,10 @@
   command: "{{ virtualenv_cmd }} '{{ base_dir }}'"
 
 - name: Clone Git repository
-  command: "git clone {{ git_repo }} '{{ base_dir }}/appdata'"
+  git:
+    repo: '{{ git_repo }}'
+    dest: '{{ base_dir }}/appdata'
+    version: '{{ git_branch }}'
 
 - name: Install requirements.txt
   command: "'{{ base_dir }}/bin/pip' install -r '{{ base_dir }}/appdata/requirements.txt'"
