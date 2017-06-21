@@ -3,7 +3,7 @@ nginx-uwsgi Ansible Playbook
 
 Automation for nginx and uWSGI Emperor setup. Based on my [pyweb tutorial][] and [Ansible][].
 
-Version: 1.1 — [changelog][]
+Version: 1.2 — [changelog][]
 
 [pyweb tutorial]: https://chriswarrick.com/blog/2016/02/10/deploying-python-web-apps-with-nginx-and-uwsgi-emperor/
 [Ansible]: https://www.ansible.com/
@@ -50,10 +50,12 @@ Configuration happens in three files: `hosts`, `group_vars/all`, and `group_vars
 
 * `base_dir`: the directory for the app (default: `/srv/myapp`)
 * `nginx_server_name`: hostnames the website is accessible under (default: `localhost myapp.local`)
+* `nginx_http_port`: port to use when serving HTTP (default: `80`)
 * `uwsgi_module`: WSGI module to use (constructed from `app_package`, `app_callable` — leave it as-is)
 * `uwsgi_processes` and `uwsgi_threads`: control the resources devoted to this application. (default: `1` and `1`; should be more for bigger apps)
 * `uwsgi_env`: list of environment variables to pass to the app (in key=value format; default: empty)
 * `git_repo`: Git repository that contains app code (default: `https://github.com/Kwpolska/flask-demo-app`)
+* `git_branch`: Git branch to pull from (default: `master`)
 * `nginx_hostless_global_config`: Replace nginx.conf with one that does not have a default host. Destructive, see caveat below! (default: `no`)
 
 ### Global with different values for every OS
@@ -87,7 +89,7 @@ Make sure you have the following packages installed first on the *destination* m
 
 The default config of nginx creates some servers with default pages. Not everyone wants that. If you want this playbook to *replace* your nginx.conf file with one that has no servers (based on your OSes default `nginx.conf`), set `nginx_hostless_global_config` to `yes`. You should not use it if you customized /etc/nginx/nginx.conf in any way, or if you have installed and configured nginx before. On Ubuntu and Debian, `nginx_disable_default_site` is less destructive and enabled by default.
 
-### nginx host config is very basic (All OSes)
+### nginx host config is very basic — HTTPS needs extra work (All OSes)
 
 The nginx host config is rudimentary and does not include SSL/TLS support and custom error pages. For the former, see [Remy van Elst’s guide](https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html).
 
