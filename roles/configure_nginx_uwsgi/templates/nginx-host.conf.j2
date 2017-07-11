@@ -12,10 +12,10 @@ server {
     }
 
     location /static {
-        alias {{ base_dir }}/appdata/static;
+        alias {{ appdata_dir }}/static;
     }
 
     location /favicon.ico {
-        alias {{ base_dir }}/appdata/static/favicon.ico;
+        alias {{ appdata_dir }}/static/favicon.ico;
     }
 }

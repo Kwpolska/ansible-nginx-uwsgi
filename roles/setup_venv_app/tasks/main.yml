@@ -10,11 +10,11 @@
 - name: Clone Git repository
   git:
     repo: '{{ git_repo }}'
-    dest: '{{ base_dir }}/appdata'
+    dest: '{{ appdata_dir }}'
     version: '{{ git_branch }}'
 
 - name: Install requirements.txt
-  command: "'{{ base_dir }}/bin/pip' install -r '{{ base_dir }}/appdata/requirements.txt'"
+  command: "'{{ base_dir }}/bin/pip' install -r '{{ appdata_dir }}/requirements.txt'"
 
 - name: Set permissions for base directory
   file:

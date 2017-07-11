@@ -1,7 +1,7 @@
 [uwsgi]
 socket = {{ base_dir }}/uwsgi.sock
 chmod-socket = 775
-chdir = {{ base_dir }}/appdata
+chdir = {{ appdata_dir }}
 master = true
 binary-path = {{ base_dir }}/bin/uwsgi
 virtualenv = {{ base_dir }}

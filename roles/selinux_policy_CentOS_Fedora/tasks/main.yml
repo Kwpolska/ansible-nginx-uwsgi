@@ -6,7 +6,7 @@
   when: selinux_prev == 'enforcing'
 
 - name: Make static files readable by nginx (SELinux)
-  command: chcon -R system_u:system_r:httpd_t:s0 '{{ base_dir }}/appdata/static'
+  command: chcon -R system_u:system_r:httpd_t:s0 '{{ appdata_dir }}/static'
 
 - name: Re-enable SELinux
   selinux:

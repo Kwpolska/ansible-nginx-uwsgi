@@ -3,7 +3,7 @@ nginx-uwsgi Ansible Playbook
 
 Automation for nginx and uWSGI Emperor setup. Based on my [pyweb tutorial][] and [Ansible][].
 
-Version: 1.2 — [changelog][]
+Version: 1.3 — [changelog][]
 
 [pyweb tutorial]: https://chriswarrick.com/blog/2016/02/10/deploying-python-web-apps-with-nginx-and-uwsgi-emperor/
 [Ansible]: https://www.ansible.com/
@@ -48,7 +48,8 @@ Configuration happens in three files: `hosts`, `group_vars/all`, and `group_vars
   | Bottle    | filename     | app         | filename:app             | module name (for a Python import)                                                  | `app = bottle.default_app()`   | —                                                                                          |
   | Pyramid   | filename     | app         | filename:app             | module name (for a Python import)                                                  | `app = config.make_wsgi_app()` | make sure it’s **not** in an `if __name__ == '__main__':` block — the demo app does that!) |
 
-* `base_dir`: the directory for the app (default: `/srv/myapp`)
+* `base_dir`: the base directory (and virtualenv) for the app (default: `/srv/myapp`)
+* `appdata_dir`: the directory where app data files reside (default: `{{ base_dir }}/appdata`)
 * `nginx_server_name`: hostnames the website is accessible under (default: `localhost myapp.local`)
 * `nginx_http_port`: port to use when serving HTTP (default: `80`)
 * `uwsgi_module`: WSGI module to use (constructed from `app_package`, `app_callable` — leave it as-is)
