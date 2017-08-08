@@ -1,6 +1,6 @@
 ---
 - name: Remember SELinux status
-  set_fact: "selinux_prev={{ ansible_selinux['mode'] }}"
+  set_fact: "selinux_prev={{ ansible_selinux['mode'] | default('disabled') }}"
 
 - name: Temporarily disable SELinux
   selinux:

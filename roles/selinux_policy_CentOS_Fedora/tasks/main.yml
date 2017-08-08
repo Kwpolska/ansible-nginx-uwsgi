@@ -7,6 +7,7 @@
 
 - name: Make static files readable by nginx (SELinux)
   command: chcon -R system_u:system_r:httpd_t:s0 '{{ appdata_dir }}/static'
+  when: selinux_prev != 'disabled'
 
 - name: Re-enable SELinux
   selinux:
@@ -24,6 +25,7 @@
 
 - name: Import SELinux policy
   command: semodule -i /tmp/nginx-uwsgi.pp
+  when: selinux_prev != 'disabled'
 
 - name: Delete SELinux policy file
   file:
