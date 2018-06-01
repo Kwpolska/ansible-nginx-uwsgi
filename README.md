@@ -107,6 +107,15 @@ include /etc/nginx/conf.d/*;
 
 Afterwards, disable patching — set `nginx_patch_confd_Archlinux` to `no`. You should also disable this patch if you already used this playbook, or have a modular configuration directory already (you can change the path in config).
 
+### virtualenvs use symlinks
+
+If you’re installing to a place that doesn’t like symlinks — for example,
+a VM shared folder (eg. ``/vagrant``) on a Windows host, you may get a
+*Protocol error* pointing to a ``os.symlink`` call in ``virtualenv.py``. You
+can fix this by amending the virtualenv command to use ``--always-copy``, or by
+using a more reasonable place to store your virtualenv (a Unix filesystem, that
+is).
+
 License
 -------
 
