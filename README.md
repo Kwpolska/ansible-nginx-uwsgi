@@ -3,7 +3,7 @@ nginx-uwsgi Ansible Playbook
 
 Automation for nginx and uWSGI Emperor setup. Based on my [pyweb tutorial][] and [Ansible][].
 
-Version: 1.4 — [changelog][]
+Version: 1.5 — [changelog][]
 
 [pyweb tutorial]: https://chriswarrick.com/blog/2016/02/10/deploying-python-web-apps-with-nginx-and-uwsgi-emperor/
 [Ansible]: https://www.ansible.com/
@@ -14,7 +14,7 @@ Supported OSes
 
 The support list matches the tutorial:
 
-* Ubuntu 16.04 LTS or newer
+* Ubuntu 16.04 LTS, 18.04 LTS or newer
 * Debian 8 (jessie) or newer
 * Fedora 24 or newer (with SELinux enabled and disabled)
 * CentOS 7 (with SELinux enabled and disabled)
