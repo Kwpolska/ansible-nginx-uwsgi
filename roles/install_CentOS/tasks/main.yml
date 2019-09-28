@@ -7,9 +7,6 @@
 
 - name: Install packages (CentOS)
   yum:
-    name: python34,python34-pip,uwsgi,uwsgi-plugin-python3,uwsgi-logger-file,nginx,git,wget
+    name: python34,uwsgi,uwsgi-plugin-python3,uwsgi-logger-file,nginx,git,wget
     state: present
     update_cache: yes
-
-- name: Install virtualenv for root (CentOS)
-  command: python3 -m pip install --user virtualenv

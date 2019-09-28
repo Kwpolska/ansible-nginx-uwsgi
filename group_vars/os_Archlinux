@@ -4,7 +4,7 @@ gid: http
 nginx_dir: /etc/nginx/conf.d
 uwsgi_dir: /etc/uwsgi/vassals
 uwsgi_plugins: python
-virtualenv_cmd: python3 -m virtualenv
+venv_cmd: python3 -m venv
 uwsgi_service_name: emperor.uwsgi
 # This tutorial assumes you use /etc/nginx/conf.d for your nginx config.
 # The default Arch Linux /etc/nginx/nginx.conf does not do this, and therefore

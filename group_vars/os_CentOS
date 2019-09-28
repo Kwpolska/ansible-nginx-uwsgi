@@ -4,6 +4,6 @@ gid: nginx
 nginx_dir: /etc/nginx/conf.d
 uwsgi_dir: /etc/uwsgi.d
 uwsgi_plugins: python3,logfile
-virtualenv_cmd: python3 -m virtualenv
+venv_cmd: python3 -m venv
 uwsgi_service_name: uwsgi
 skip_selinux: no

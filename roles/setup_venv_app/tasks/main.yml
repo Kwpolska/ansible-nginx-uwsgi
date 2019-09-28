@@ -5,7 +5,7 @@
     state: absent
 
 - name: Create a virtual environment
-  command: "{{ virtualenv_cmd }} '{{ base_dir }}'"
+  command: "{{ venv_cmd }} '{{ base_dir }}'"
 
 - name: Clone Git repository
   git:

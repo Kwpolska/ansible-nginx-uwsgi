@@ -1,6 +1,6 @@
 ---
 - name: Install packages (Arch Linux)
   pacman:
-    name: python,python-virtualenv,uwsgi,uwsgi-plugin-python,nginx,git
+    name: python,uwsgi,uwsgi-plugin-python,nginx,git
     state: latest
     update_cache: yes
