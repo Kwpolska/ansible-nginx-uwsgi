@@ -7,6 +7,6 @@
 
 - name: Install packages (CentOS)
   yum:
-    name: python34,uwsgi,uwsgi-plugin-python3,uwsgi-logger-file,nginx,git,wget
+    name: python36,uwsgi,uwsgi-plugin-python36,uwsgi-logger-file,nginx,git,wget
     state: present
     update_cache: yes
