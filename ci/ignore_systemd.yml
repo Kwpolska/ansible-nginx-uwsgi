@@ -1,0 +1,3 @@
+---
+- name:
+  debug: msg="CI runs in Docker, cannot use systemd services"
