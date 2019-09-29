@@ -1,0 +1,28 @@
+name: Run CI in Docker
+
+on: [push]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [
+            [fedora, 29],
+            [fedora, 30],
+            [centos, 7],
+            [debian, 9],
+            [debian, 10],
+            [ubuntu, 16.04],
+            [ubuntu, 18.04],
+            [archlinux, latest]
+            ]
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build and run the Docker image
+      run: |
+        export DOCKER_TAG=anu-${{matrix.os[0] }}:${{ matrix.os[1] }}
+        cd $GITHUB_WORKSPACE/ci/${{ matrix.os[0] }}
+        docker build --tag $DOCKER_TAG --build-arg OS_VERSION=${{ matrix.os[1] }} .
+        docker run --rm -v $GITHUB_WORKSPACE:/repo $DOCKER_TAG
