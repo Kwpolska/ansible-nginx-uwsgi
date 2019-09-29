@@ -1,4 +1,4 @@
-name: Run CI in Docker
+name: CI in Docker for ansible-nginx-uwsgi (pyweb)
 
 on: [push]
 

@@ -3,6 +3,8 @@ nginx-uwsgi Ansible Playbook
 
 Automation for nginx and uWSGI Emperor setup. Based on my [pyweb tutorial][] and [Ansible][].
 
+![](https://github.com/Kwpolska/ansible-nginx-uwsgi/workflows/CI%20in%20Docker%20for%20ansible-nginx-uwsgi%20%40pyweb%41/badge.svg)
+
 Version: 1.8 — [changelog][]
 
 [pyweb tutorial]: https://chriswarrick.com/blog/2016/02/10/deploying-python-web-apps-with-nginx-and-uwsgi-emperor/
