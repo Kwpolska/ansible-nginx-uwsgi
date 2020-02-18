@@ -4,3 +4,7 @@
     name: python3,python3-venv,uwsgi,uwsgi-emperor,uwsgi-plugin-python3,nginx-full,git
     state: present
     update_cache: yes
+
+- name: Set special variables for old Debian/Ubuntu versions
+  include_vars: vars/Debian_Ubuntu_legacy_venv
+  when: (ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'xenial') or (ansible_distribution == 'Debian' and ansible_distribution_release == 'stretch')
