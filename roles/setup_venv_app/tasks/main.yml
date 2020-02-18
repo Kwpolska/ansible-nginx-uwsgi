@@ -4,8 +4,13 @@
     path: '{{ base_dir }}'
     state: absent
 
+- name: Create empty base directory
+  file:
+    path: '{{ base_dir }}'
+    state: directory
+
 - name: Create a virtual environment
-  command: "{{ venv_cmd }} '{{ base_dir }}'"
+  command: "{{ venv_cmd }} --prompt '{{ app_name }}' '{{ venv_dir }}'"
 
 - name: Clone Git repository
   git:
@@ -14,7 +19,7 @@
     version: '{{ git_branch }}'
 
 - name: Install requirements.txt
-  command: "'{{ base_dir }}/bin/pip' install -r '{{ appdata_dir }}/requirements.txt'"
+  command: "'{{ venv_dir }}/bin/pip' install -r '{{ appdata_dir }}/requirements.txt'"
 
 - name: Set permissions for base directory
   file:

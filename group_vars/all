@@ -3,6 +3,7 @@ app_name: myapp
 app_package: flaskapp
 app_callable: app
 base_dir: '/srv/{{ app_name }}'
+venv_dir: '{{ base_dir }}/venv'
 appdata_dir: '{{ base_dir }}/appdata'
 nginx_server_name: 'localhost {{ app_name }}.local'
 # This affects HTTP only. HTTPS requires manual config.

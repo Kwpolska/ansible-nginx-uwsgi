@@ -5,7 +5,7 @@ nginx-uwsgi Ansible Playbook
 
 Automation for nginx and uWSGI Emperor setup. Based on my [pyweb tutorial][] and [Ansible][].
 
-Version: 1.8 — [changelog][]
+Version: 2.0 — [changelog][]
 
 [pyweb tutorial]: https://chriswarrick.com/blog/2016/02/10/deploying-python-web-apps-with-nginx-and-uwsgi-emperor/
 [Ansible]: https://www.ansible.com/
@@ -31,6 +31,8 @@ Usage
 Standard Ansible Playbooks procedure. [Install Ansible](https://docs.ansible.com/ansible/intro_installation.html), edit the applicable configuration in `group_vars`, put hostnames in `hosts` (the first line is `[nginx-uwsgi]` and the following lines are `hostnames`; default is to install on localhost) and run:
 
     $ ansible-playbook nginx-uwsgi.yml -i hosts
+
+(You may want to add the ``-K`` option to be asked for the sudo password.)
 
 To understand what the Playbook does, make sure to read the [pyweb tutorial][].
 
