@@ -5,7 +5,7 @@ nginx-uwsgi Ansible Playbook
 
 Automation for nginx and uWSGI Emperor setup. Based on my [pyweb tutorial][] and [Ansible][].
 
-Version: 2.1 — [changelog][]
+Version: 2.2 — [changelog][]
 
 [pyweb tutorial]: https://chriswarrick.com/blog/2016/02/10/deploying-python-web-apps-with-nginx-and-uwsgi-emperor/
 [Ansible]: https://www.ansible.com/
@@ -46,12 +46,12 @@ Configuration happens in three files: `hosts`, `group_vars/all`, and `group_vars
 * `app_name`: the application name, used for configuration files (default: `myapp`)
 * `app_package`, `app_callable`: WSGI module to use (default: `flaskapp`, `app`)
 
-  | Framework | Package      | Callable    | Resulting module name    | Package is…                                                                        | Callable is…                   | Caveats                                                                                    |
-  |-----------|--------------|-------------|--------------------------|------------------------------------------------------------------------------------|--------------------------------|--------------------------------------------------------------------------------------------|
-  | Flask     | filename     | app         | filename:app             | module name (for a Python import)                                                  | Flask object                   | —                                                                                          |
-  | Django    | project.wsgi | application | project.wsgi:application | `project` is name of your project (directory with settings.py); `wsgi` is constant | constant                       | add an environment variable for settings, there’s an example in `group_vars/all` already   |
-  | Bottle    | filename     | app         | filename:app             | module name (for a Python import)                                                  | `app = bottle.default_app()`   | —                                                                                          |
-  | Pyramid   | filename     | app         | filename:app             | module name (for a Python import)                                                  | `app = config.make_wsgi_app()` | make sure it’s **not** in an `if __name__ == '__main__':` block — the demo app does that!) |
+  | Framework | Flask, Bottle | Django | Pyramid    |
+  |-----------|---------------|--------|------------|
+  | Package  | module where `app` is defined | <code><em>project</em>.wsgi</code> (<code><em>project</em></code> is the package with `settings.py`) | module where `app` is defined |
+  | Callable | Flask: `app` instance<br>Bottle: `app = bottle.default_app()` | `application` | `app = config.make_wsgi_app()` |
+  | Module   | <code><em>package</em>:app</code> | <code><em>project</em>.wsgi:application</code> | <code><em>package</em>:app</code> |
+  | Caveats  | Make sure app is **not** in an `if __name__ == '__main__':` block | Add environment variable for settings:<br><code>env = DJANGO_SETTINGS_MODULE=project.settings</code> | Make sure app is **not** in an `if __name__ == '__main__':` block (the demo quickstart does that!) |
 
 * `base_dir`: the base directory (and virtual environment) for the app (default: `/srv/myapp`)
 * `appdata_dir`: the directory where app data files reside (default: `{{ base_dir }}/appdata`)
