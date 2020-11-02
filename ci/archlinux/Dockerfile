@@ -1,5 +1,5 @@
 ARG OS_VERSION=latest
-FROM archlinux/base:$OS_VERSION
+FROM archlinux:$OS_VERSION
 RUN pacman -Syu --noconfirm
 RUN pacman -S --noconfirm ansible openssh sudo python curl patch sed
 RUN /usr/bin/ssh-keygen -A
