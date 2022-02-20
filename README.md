@@ -17,12 +17,12 @@ Supported OSes
 The support list matches the tutorial:
 
 * Ubuntu 16.04 LTS, 18.04 LTS, 20.04 LTS or newer
-* Debian 9 (stretch) or newer
-* Fedora 29 or newer (with SELinux enabled and disabled)
+* Debian 10 (buster), 11 (bullseye) or newer
+* Fedora 33 or newer (with SELinux enabled and disabled)
 * CentOS 7 (with SELinux enabled and disabled)
 * Arch Linux
 
-Debian 8 (jessie), and Fedora 24 through 28 are not officially supported, even though they still probably work.
+Debian 8 (jessie), 9 (stretch), Ubuntu 16.04 LTS, and Fedora 24 through 32 are not officially supported, even though they still probably work.
 Other operating systems are *unsupported*, because of packaging and default configuration differences.
 
 Usage
