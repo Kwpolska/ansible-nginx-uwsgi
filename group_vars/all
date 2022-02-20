@@ -1,5 +1,4 @@
 ---
-ansible_python_interpreter=/usr/bin/python3
 app_name: myapp
 app_package: flaskapp
 app_callable: app

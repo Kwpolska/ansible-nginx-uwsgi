@@ -1,4 +1,5 @@
 ---
+ansible_python_interpreter: /usr/bin/python3
 uid: www-data
 gid: www-data
 nginx_dir: /etc/nginx/sites-enabled
