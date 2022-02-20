@@ -1,0 +1,11 @@
+---
+ansible_python_interpreter: /usr/bin/python3
+uid: uwsgi
+gid: nginx
+nginx_dir: /etc/nginx/conf.d
+uwsgi_dir: /etc/uwsgi.d
+uwsgi_plugins: python3,logfile
+venv_cmd: python3 -m venv
+venv_full_cmd: '{{ venv_cmd }} --prompt "{{ app_name }}"'
+uwsgi_service_name: uwsgi
+skip_selinux: no

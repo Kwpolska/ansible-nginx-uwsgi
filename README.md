@@ -5,7 +5,7 @@ nginx-uwsgi Ansible Playbook
 
 Automation for nginx and uWSGI Emperor setup. Based on my [pyweb tutorial][] and [Ansible][].
 
-Version: 2.3 — [changelog][]
+Version: 2.4 — [changelog][]
 
 [pyweb tutorial]: https://chriswarrick.com/blog/2016/02/10/deploying-python-web-apps-with-nginx-and-uwsgi-emperor/
 [Ansible]: https://www.ansible.com/
@@ -16,10 +16,12 @@ Supported OSes
 
 The support list matches the tutorial:
 
-* Ubuntu 16.04 LTS, 18.04 LTS, 20.04 LTS or newer
+* Ubuntu 18.04 LTS, 20.04 LTS or newer
 * Debian 10 (buster), 11 (bullseye) or newer
 * Fedora 33 or newer (with SELinux enabled and disabled)
 * CentOS 7 (with SELinux enabled and disabled)
+* AlmaLinux 8 (with SELinux enabled and disabled). Referred to as “EL8” collectively with Rocky Linux.
+* Rocky Linux 8 (with SELinux enabled and disabled). Referred to as “EL8” collectively with AlmaLinux.
 * Arch Linux
 
 Debian 8 (jessie), 9 (stretch), Ubuntu 16.04 LTS, and Fedora 24 through 32 are not officially supported, even though they still probably work.
@@ -77,7 +79,7 @@ Configuration happens in three files: `hosts`, `group_vars/all`, and `group_vars
 
 * `nginx_patch_confd_Archlinux`: patch `/etc/nginx/nginx.conf` to use `conf.d` (default: `yes`; may fail)
 * `nginx_disable_default_site`: disable the default site by removing `/etc/nginx/sites-enabled/default` (default: `yes`; for Debian/Ubuntu)
-* `skip_selinux`: skip SELinux tasks (default: `no`; for CentOS/Fedora)
+* `skip_selinux`: skip SELinux tasks (default: `no`; for CentOS/EL8/Fedora)
 
 Caveats
 -------
@@ -88,7 +90,7 @@ Make sure you have the following packages installed first on the *destination* m
 
 * Debian/Ubuntu: `python`
 * Fedora: `python2 python2-dnf libselinux-python`
-* CentOS: `python libselinux-python`
+* AlmaLinux, CentOS, Rocky Linux: `python libselinux-python`
 * Arch Linux: `python2`
 
 ### nginx default site configuration (All OSes)

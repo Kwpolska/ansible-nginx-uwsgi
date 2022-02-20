@@ -1,5 +1,5 @@
 ---
-- name: Patch uwsgi.ini (Fedora)
+- name: Patch uwsgi.ini (EL/Fedora)
   copy:
     src: files/uwsgi.ini
     dest: /etc/uwsgi.ini

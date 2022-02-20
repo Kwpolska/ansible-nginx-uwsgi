@@ -3,7 +3,7 @@ OS=$1
 echo "Running CI script, OS=$OS"
 UWSGI_EXTRA_ARGS=''
 case $OS in
-    fedora | centos)
+    fedora | centos | almalinux | rockylinux)
         UWSGI_USER=uwsgi
         SOCKET_GROUP=nginx
         UWSGI_INI=/etc/uwsgi.ini

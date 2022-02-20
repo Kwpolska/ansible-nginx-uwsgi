@@ -9,6 +9,7 @@
 - hosts: all
   tasks:
      - group_by: key=os_{{ ansible_distribution }}
+     - debug: msg={{ ansible_distribution }}
 
 - hosts: os_Debian:os_Ubuntu
   gather_facts: False
@@ -28,24 +29,24 @@
   become_user: root
   roles:
      - install_Fedora
-     - {role: cleanup_selinux_CentOS_Fedora, when: not skip_selinux}
+     - {role: cleanup_selinux_EL_Fedora, when: not skip_selinux}
      - setup_venv_app
-     - patch_config_CentOS_Fedora
+     - patch_config_EL_Fedora
      - configure_nginx_uwsgi
-     - {role: selinux_policy_CentOS_Fedora, when: not skip_selinux}
+     - {role: selinux_policy_EL_Fedora, when: not skip_selinux}
      - start_services
 
-- hosts: os_CentOS
+- hosts: os_CentOS:os_AlmaLinux:os_Rocky
   gather_facts: False
   become: yes
   become_user: root
   roles:
-     - install_CentOS
-     - {role: cleanup_selinux_CentOS_Fedora, when: not skip_selinux}
+     - install_EL
+     - {role: cleanup_selinux_EL_Fedora, when: not skip_selinux}
      - setup_venv_app
-     - patch_config_CentOS_Fedora
+     - patch_config_EL_Fedora
      - configure_nginx_uwsgi
-     - {role: selinux_policy_CentOS_Fedora, when: not skip_selinux}
+     - {role: selinux_policy_EL_Fedora, when: not skip_selinux}
      - start_services
 
 - hosts: os_Archlinux
